@@ -1,2 +1,2 @@
 # devfiles
-A repository of sample devfile for odo
+A repository of sample devfiles for odo
