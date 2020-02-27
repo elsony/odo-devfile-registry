@@ -1,2 +1,2 @@
-# devfiles
-A repository of sample devfiles for odo
+# devfiles registry
+A repository for storing sample devfiles for odo and others
