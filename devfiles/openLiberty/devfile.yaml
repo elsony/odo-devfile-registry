@@ -34,7 +34,7 @@ components:
         containerPath: /home/user/.m2
 commands:
   -
-    name: Build
+    name: devBuild
     actions:
       -
         type: exec
@@ -42,7 +42,7 @@ commands:
         command: "/artifacts/bin/build.sh"
         workdir: /projects/openLiberty
   -
-    name: Run
+    name: devRun
     actions:
       -
         type: exec
