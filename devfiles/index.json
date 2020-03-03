@@ -1,0 +1,11 @@
+[
+    {
+      "displayName":"Spring Boot®",
+      "description":"Spring Boot® using IBM Java",
+      "language":"java",
+      "projectType":"spring",
+      "location":"https://github.com/microclimate-dev2ops/springJavaTemplate",
+      "links": {"self":"/devfiles/springJavaTemplate/devfile.yaml" }
+    }
+]
+    
