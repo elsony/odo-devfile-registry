@@ -5,7 +5,15 @@
       "language":"java",
       "projectType":"spring",
       "location":"https://github.com/microclimate-dev2ops/springJavaTemplate",
-      "links": {"self":"/devfiles/springJavaTemplate/devfile.yaml" }
+      "links": {"self":"/devfiles/springBoot/devfile.yaml" }
+    },
+    {
+        "displayName":"Open Liberty",
+        "description":"Template for building an Open Liberty microservice in Java",
+        "language":"java",
+        "projectType":"docker",
+        "location":"https://github.com/microclimate-dev2ops/openLibertyTemplate",
+        "links": {"self":"/devfiles/openLiberty/devfile.yaml" }
     }
 ]
     
