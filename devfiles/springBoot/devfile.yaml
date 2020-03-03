@@ -40,7 +40,7 @@ components:
         containerPath: /data
 commands:
   -
-    name: Full Build
+    name: devBuild
     actions:
       -
         type: exec
@@ -48,7 +48,7 @@ commands:
         command: "/artifacts/bin/build-container-full.sh"
         workdir: /projects/springbootproject
   -
-    name: Start and Run Server
+    name: devRun
     actions:
       -
         type: exec
