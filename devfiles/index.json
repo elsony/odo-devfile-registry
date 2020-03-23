@@ -1,19 +1,39 @@
 [
-    {
-      "displayName":"Spring Boot®",
-      "description":"Spring Boot® using IBM Java",
-      "language":"java",
-      "projectType":"spring",
-      "location":"https://github.com/microclimate-dev2ops/springJavaTemplate",
-      "links": {"self":"/devfiles/springBoot/devfile.yaml" }
-    },
-    {
-        "displayName":"Open Liberty",
-        "description":"Open Liberty microservice in Java",
-        "language":"java",
-        "projectType":"docker",
-        "location":"https://github.com/microclimate-dev2ops/openLibertyTemplate",
-        "links": {"self":"/devfiles/openLiberty/devfile.yaml" }
+  {
+    "displayName": "Maven Java",
+    "description": "Upstream Maven and OpenJDK 11",
+    "tags": [
+      "Java",
+      "Maven"
+    ],
+    "projectType": "maven",
+    "language": "java",
+    "links": {
+      "self": "/devfiles/maven/devfile.yaml"
     }
+  },
+  {
+    "displayName": "Open Liberty",
+    "description": "Open Liberty microservice in Java",
+    "projectType": "docker",
+    "language": "java",
+    "links": {
+      "self": "/devfiles/openLiberty/devfile.yaml"
+    }
+  },
+  {
+    "displayName": "Spring Boot®",
+    "description": "Spring Boot® using IBM Java",
+    "tags": [
+      "Java",
+      "Spring"
+    ],
+    "globalMemoryLimit": "2674Mi",
+    "icon": "https://www.eclipse.org/che/images/logo-eclipseche.svg",
+    "projectType": "spring",
+    "language": "java",
+    "links": {
+      "self": "/devfiles/springBoot/devfile.yaml"
+    }
+  }
 ]
-    
