@@ -1,49 +1,38 @@
----
 apiVersion: 1.0.0
 metadata:
   generateName: openLiberty
+attributes:
+  odo.autorestart: "false"
 projects:
-  -
-    name: openLiberty
-    source:
-      type: git
-      location: "https://github.com/rajivnathan/openLiberty.git"
+- name: openLiberty
+  source:
+    type: git
+    location: https://github.com/rajivnathan/openLiberty.git
 components:
-  -
-    type: chePlugin
-    id: redhat/java/latest
-    memoryLimit: 1512Mi
-  -
-    type: dockerimage
-    image: jeevandroid/open-liberty-dev:latest
-    alias: runtime
-    memoryLimit: 768Mi
-    env:
-      - name: "MODE"
-        value: "TEST"
-      - name: "myprop"
-        value: "myval"
-    endpoints:
-      - name: '9090/tcp'
-        port: 9090
-    mountSources: true
-    volumes:
-      - name: m2
-        containerPath: /home/user/.m2
+- type: chePlugin
+  id: redhat/java/latest
+  memoryLimit: 1512Mi
+- alias: devruntime
+  mountSources: true
+  type: dockerimage
+  image: jeevandroid/open-liberty-dev:latest
+  memoryLimit: 768Mi
+  volumes:
+  - name: m2
+    containerPath: /home/user/.m2
+  endpoints:
+  - name: 9090/tcp
+    port: 9090
 commands:
-  -
-    name: devBuild
-    actions:
-      -
-        type: exec
-        component: runtime
-        command: "/artifacts/bin/build.sh"
-        workdir: /projects/openLiberty
-  -
-    name: devRun
-    actions:
-      -
-        type: exec
-        component: runtime
-        command: "/artifacts/bin/run.sh"
-        workdir: /projects/openLiberty
+- actions:
+  - command: /artifacts/bin/build.sh
+    component: devruntime
+    type: exec
+    workdir: /projects/openLiberty
+  name: devBuild
+- actions:
+  - command: /artifacts/bin/run.sh
+    component: devruntime
+    type: exec
+    workdir: /projects/openLiberty
+  name: devRun

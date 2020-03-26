@@ -5,12 +5,6 @@
 date
 echo Started - Full build
 
-if [ "$TEST_ENV" = "true" ]; then
-    echo "Running in test mode"
-else
-    echo "Running in development mode"
-fi
-
 if [ ! -f pom.xml ]; then
     echo "The current working directory ($PWD) does not contain a maven project"
     exit 1
