@@ -1,0 +1,23 @@
+apiVersion: 1.0.0
+metadata:
+  generateName: nodejs-
+components:
+  - type: dockerimage
+    alias: runtime
+    image: quay.io/eclipse/che-nodejs10-ubi:nightly
+    memoryLimit: 1024Mi
+    mountSources: true
+    endpoints:
+      - name: "9090/tcp"
+        port: 9090
+commands:
+  - name: devBuild
+    actions:
+      - type: exec
+        component: runtime
+        command: npm install
+  - name: devRun
+    actions:
+      - type: exec
+        component: runtime
+        command: nodemon app.js
