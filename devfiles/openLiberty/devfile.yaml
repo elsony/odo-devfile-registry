@@ -21,8 +21,10 @@ components:
   - name: m2
     containerPath: /home/user/.m2
   endpoints:
-  - name: 9090/tcp
-    port: 9090
+  - name: 9080/tcp
+    port: 9080
+  - name: 9443/tcp
+    port: 9443
 commands:
 - actions:
   - command: /artifacts/bin/build.sh
