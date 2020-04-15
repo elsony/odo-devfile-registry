@@ -1,6 +1,12 @@
 apiVersion: 1.0.0
 metadata:
   generateName: nodejs-
+projects:
+  -
+    name: nodejs-web-app
+    source:
+      type: git
+      location: "https://github.com/che-samples/web-nodejs-sample.git"
 components:
   - type: dockerimage
     alias: runtime
@@ -8,16 +14,18 @@ components:
     memoryLimit: 1024Mi
     mountSources: true
     endpoints:
-      - name: "9090/tcp"
-        port: 9090
+      - name: "3000/tcp"
+        port: 3000
 commands:
   - name: devBuild
     actions:
       - type: exec
         component: runtime
         command: npm install
+        workdir: ${CHE_PROJECTS_ROOT}/nodejs-web-app/app
   - name: devRun
     actions:
       - type: exec
         component: runtime
         command: nodemon app.js
+        workdir: ${CHE_PROJECTS_ROOT}/nodejs-web-app/app
