@@ -49,5 +49,18 @@
     "links": {
       "self": "/devfiles/springBoot/devfile.yaml"
     }
+  },
+  {
+    "displayName": "Quarkus Java",
+    "description": "Upstream Quarkus with Java+GraalVM",
+    "tags": [
+      "Java",
+      "Quarkus"
+    ],
+    "projectType": "quarkus",
+    "language": "java",
+    "links": {
+      "self": "/devfiles/quarkus/devfile.yaml"
+    }
   }
 ]
