@@ -2,12 +2,6 @@
 apiVersion: 1.0.0
 metadata:
   generateName: quarkus-
-projects:
-  - name: quarkus-quickstarts
-    source:
-      type: git
-      location: "https://github.com/quarkusio/quarkus-quickstarts.git"
-      sparseCheckoutDir: getting-started
 components:
   - type: dockerimage
     alias: tools
@@ -28,10 +22,8 @@ commands:
       - type: exec
         component: tools
         command: "mvn package"
-        workdir: ${CHE_PROJECTS_ROOT}/quarkus-quickstarts/getting-started
   - name: devRun
     actions: 
       - type: exec
         component: tools
         command: "java -jar ./target/getting-started-1.0-SNAPSHOT-runner.jar"
-        workdir: ${CHE_PROJECTS_ROOT}/quarkus-quickstarts/getting-started
