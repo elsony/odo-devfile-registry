@@ -6,24 +6,22 @@ components:
   - type: dockerimage
     alias: tools
     image: quay.io/eclipse/che-quarkus:nightly
-    memoryLimit: 1024Mi
+    memoryLimit: 1512Mi
     mountSources: true
     volumes:
       - name: m2
         containerPath: /home/user/.m2
     endpoints:
-      - name: 'hello-greetingep'
+      - name: '8080/tcp'
         port: 8080
-        attributes:
-          path: /hello/greeting/che-user
 commands:
   - name: devBuild
     actions:
       - type: exec
         component: tools
-        command: "mvn package"
+        command: "mvn compile"
   - name: devRun
-    actions: 
+    actions:
       - type: exec
         component: tools
-        command: "java -jar ./target/getting-started-1.0-SNAPSHOT-runner.jar"
+        command: "mvn quarkus:dev"
