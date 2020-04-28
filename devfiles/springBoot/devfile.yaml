@@ -7,7 +7,7 @@ projects:
     name: springbootproject
     source:
       type: git
-      location: "https://github.com/maysunfaisal/springboot.git"
+      location: "https://github.com/odo-devfiles/springboot-ex.git"
 components:
   -
     type: chePlugin
