@@ -15,12 +15,14 @@ components:
       - name: '8080/tcp'
         port: 8080
 commands:
-  - name: devBuild
+  - name: devInit
     actions:
       - type: exec
         component: tools
         command: "mvn compile"
   - name: devRun
+    attributes:
+        restart: "false"
     actions:
       - type: exec
         component: tools
