@@ -6,7 +6,7 @@ projects:
     name: nodejs-web-app
     source:
       type: git
-      location: "https://github.com/che-samples/web-nodejs-sample.git"
+      location: "https://github.com/odo-devfiles/nodejs-ex.git"
 components:
   - type: dockerimage
     alias: runtime

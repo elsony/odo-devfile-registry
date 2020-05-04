@@ -7,7 +7,7 @@ projects:
 - name: openLiberty
   source:
     type: git
-    location: https://github.com/rajivnathan/openLiberty.git
+    location: https://github.com/odo-devfiles/openliberty-ex.git
 components:
 - type: chePlugin
   id: redhat/java/latest
