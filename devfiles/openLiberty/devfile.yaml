@@ -41,9 +41,3 @@ commands:
         component: appsodyrun
     attributes:
         restart: "false"
-  - name: devInit
-    actions:
-      - workdir: /projects/user-app
-        type: exec
-        command: mvn --help 
-        component: appsodyrun
