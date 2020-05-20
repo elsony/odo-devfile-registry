@@ -1,40 +1,49 @@
-apiVersion: 1.0.0
 metadata:
-  generateName: openLiberty
-attributes:
-  odo.autorestart: "false"
+  name: java-openliberty
 projects:
-- name: openLiberty
-  source:
-    type: git
-    location: https://github.com/odo-devfiles/openliberty-ex.git
+  - name: user-app
+    source:
+      location: 'https://github.com/ajm01/odo-run-sampleproj.git'
+      type: git
+      branch: master
 components:
-- type: chePlugin
-  id: redhat/java/latest
-  memoryLimit: 1512Mi
-- alias: devruntime
-  mountSources: true
-  type: dockerimage
-  image: jeevandroid/open-liberty-dev:latest
-  memoryLimit: 768Mi
-  volumes:
-  - name: m2
-    containerPath: /home/user/.m2
-  endpoints:
-  - name: 9080/tcp
-    port: 9080
-  - name: 9443/tcp
-    port: 9443
+  - id: redhat/java/latest
+    memoryLimit: 1512Mi
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: 9080/tcp
+        port: 9080
+#    command:
+#      - tail
+#    args:
+#      - '-f'
+#      - /dev/null
+    memoryLimit: 768Mi
+    type: dockerimage
+#    volumes:
+#      - name: m2
+#        containerPath: /home/user/.m2
+    alias: appsodyrun
+    image: 'ajymau/java-openliberty-dev:latest'
+    env:
+      - value: TEST2
+        name: MODE2
+      - value: myval2
+        name: myprop2
+apiVersion: 1.0.0
 commands:
-- actions:
-  - command: /artifacts/bin/build.sh
-    component: devruntime
-    type: exec
-    workdir: /projects/openLiberty
-  name: devBuild
-- actions:
-  - command: /artifacts/bin/run.sh
-    component: devruntime
-    type: exec
-    workdir: /projects/openLiberty
-  name: devRun
+  - name: devRun
+    actions:
+      - workdir: /projects/user-app
+        type: exec
+        command: mvn -DhotTests=true -DappsDirectory=apps -Dmaven.repo.local=/mvn/repository liberty:dev
+        component: appsodyrun
+    attributes:
+        restart: "false"
+  - name: devInit
+    actions:
+      - workdir: /projects/user-app
+        type: exec
+        command: mvn --help 
+        component: appsodyrun
