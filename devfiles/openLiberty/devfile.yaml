@@ -14,16 +14,8 @@ components:
     endpoints:
       - name: 9080/tcp
         port: 9080
-#    command:
-#      - tail
-#    args:
-#      - '-f'
-#      - /dev/null
-    memoryLimit: 768Mi
+    memoryLimit: 1512Mi
     type: dockerimage
-#    volumes:
-#      - name: m2
-#        containerPath: /home/user/.m2
     alias: appsodyrun
     image: 'ajymau/java-openliberty-dev:latest'
     env:
