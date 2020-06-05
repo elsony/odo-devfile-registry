@@ -3,7 +3,7 @@ metadata:
 projects:
   - name: user-app
     source:
-      location: 'https://github.com/ajm01/odo-run-sampleproj.git'
+      location: 'https://github.com/odo-devfiles/openliberty-ex.git'
       type: git
       branch: master
 components:
