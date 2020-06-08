@@ -2,6 +2,7 @@ package types
 
 // Meta represents meta.yaml file
 type Meta struct {
+	Name              string   `yaml:"name,omitempty" json:"name,omitempty"`
 	DisplayName       string   `yaml:"displayName,omitempty" json:"displayName,omitempty"`
 	Description       string   `yaml:"description,omitempty" json:"description,omitempty"`
 	Tags              []string `yaml:"tags,omitempty" json:"tags,omitempty"`
@@ -15,7 +16,8 @@ type Meta struct {
 // This is Meta extended with Links field
 type MetaIndex struct {
 	Meta
-	Links Links `yaml:"links,omitempty" json:"links,omitempty"`
+	Supported bool  `yaml:"supported" json:"supported"`
+	Links     Links `yaml:"links,omitempty" json:"links,omitempty"`
 }
 type Links struct {
 	Self string `yaml:"self,omitempty" json:"self,omitempty"`

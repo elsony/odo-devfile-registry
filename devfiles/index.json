@@ -1,5 +1,6 @@
 [
   {
+    "name": "maven",
     "displayName": "Maven Java",
     "description": "Upstream Maven and OpenJDK 11",
     "tags": [
@@ -8,11 +9,13 @@
     ],
     "projectType": "maven",
     "language": "java",
+    "supported": true,
     "links": {
       "self": "/devfiles/maven/devfile.yaml"
     }
   },
   {
+    "name": "nodejs",
     "displayName": "NodeJS Express Web Application",
     "description": "Stack with NodeJS 10",
     "tags": [
@@ -22,20 +25,39 @@
     ],
     "projectType": "nodejs",
     "language": "nodejs",
+    "supported": true,
     "links": {
       "self": "/devfiles/nodejs/devfile.yaml"
     }
   },
   {
+    "name": "openLiberty",
     "displayName": "Open Liberty",
     "description": "Open Liberty microservice in Java",
     "projectType": "docker",
     "language": "java",
+    "supported": true,
     "links": {
       "self": "/devfiles/openLiberty/devfile.yaml"
     }
   },
   {
+    "name": "quarkus",
+    "displayName": "Quarkus Java",
+    "description": "Upstream Quarkus with Java+GraalVM",
+    "tags": [
+      "Java",
+      "Quarkus"
+    ],
+    "projectType": "quarkus",
+    "language": "java",
+    "supported": true,
+    "links": {
+      "self": "/devfiles/quarkus/devfile.yaml"
+    }
+  },
+  {
+    "name": "springBoot",
     "displayName": "Spring Boot®",
     "description": "Spring Boot® using Java",
     "tags": [
@@ -46,21 +68,9 @@
     "icon": "https://www.eclipse.org/che/images/logo-eclipseche.svg",
     "projectType": "spring",
     "language": "java",
+    "supported": true,
     "links": {
       "self": "/devfiles/springBoot/devfile.yaml"
-    }
-  },
-  {
-    "displayName": "Quarkus Java",
-    "description": "Upstream Quarkus with Java+GraalVM",
-    "tags": [
-      "Java",
-      "Quarkus"
-    ],
-    "projectType": "quarkus",
-    "language": "java",
-    "links": {
-      "self": "/devfiles/quarkus/devfile.yaml"
     }
   }
 ]
