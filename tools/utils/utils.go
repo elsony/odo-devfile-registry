@@ -13,11 +13,9 @@ const (
 	dockerImageComponent = "dockerimage"
 )
 
-// IsDevfileSupported checks if devfile v1 is supported
-func IsDevfileSupported(devfile types.Devfile) bool {
-
+// isContainerPresent checks if the devfile has a supported container
+func isContainerPresent(devfile types.Devfile) bool {
 	hasSupportedContainer := false
-	hasRunCommand := false
 
 	for _, component := range devfile.Components {
 		if strings.Contains(component.Type, dockerImageComponent) && component.Alias != "" {
@@ -26,12 +24,28 @@ func IsDevfileSupported(devfile types.Devfile) bool {
 		}
 	}
 
+	return hasSupportedContainer
+}
+
+// isRunCommandPresent checks if the devfile has a devrun command
+func isRunCommandPresent(devfile types.Devfile) bool {
+	hasRunCommand := false
+
 	for _, command := range devfile.Commands {
 		if strings.Contains(strings.ToLower(command.Name), string(defaultRunCommand)) {
 			hasRunCommand = true
 			break
 		}
 	}
+
+	return hasRunCommand
+}
+
+// IsDevfileSupported checks if devfile v1 is supported
+func IsDevfileSupported(devfile types.Devfile) bool {
+
+	hasSupportedContainer := isContainerPresent(devfile)
+	hasRunCommand := isRunCommandPresent(devfile)
 
 	return hasSupportedContainer && hasRunCommand
 }
