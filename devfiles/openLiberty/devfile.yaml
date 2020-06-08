@@ -1,5 +1,5 @@
 metadata:
-  generateName: openLiberty
+  generateName: java-openliberty
 projects:
   - name: user-app
     source:
