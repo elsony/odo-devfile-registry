@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/elsony/devfile-registry/tools/types"
-	"github.com/ghodss/yaml"
+	"gopkg.in/yaml.v2"
 )
 
 const (
@@ -16,39 +16,24 @@ const (
 // IsDevfileSupported checks if devfile v1 is supported
 func IsDevfileSupported(devfile types.Devfile) bool {
 
-	hasDockerImage := false
-	hasAlias := false
+	hasSupportedContainer := false
 	hasRunCommand := false
 
 	for _, component := range devfile.Components {
-		if hasDockerImage && hasAlias {
+		if strings.Contains(component.Type, dockerImageComponent) && component.Alias != "" {
+			hasSupportedContainer = true
 			break
-		}
-
-		if !hasDockerImage {
-			hasDockerImage = strings.Contains(component.Type, dockerImageComponent)
-		}
-
-		if !hasAlias {
-			hasAlias = len(component.Alias) > 0
 		}
 	}
 
 	for _, command := range devfile.Commands {
-		if hasRunCommand {
+		if strings.Contains(strings.ToLower(command.Name), string(defaultRunCommand)) {
+			hasRunCommand = true
 			break
 		}
-
-		if !hasRunCommand {
-			hasRunCommand = strings.Contains(strings.ToLower(command.Name), string(defaultRunCommand))
-		}
 	}
 
-	if hasDockerImage && hasAlias && hasRunCommand {
-		return true
-	}
-
-	return false
+	return hasSupportedContainer && hasRunCommand
 }
 
 // GetDevfile reads the devfile from the path and returns the devfile struct
