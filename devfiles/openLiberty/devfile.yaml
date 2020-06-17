@@ -1,6 +1,6 @@
 apiVersion: 1.0.0
 metadata:
-  name: openLiberty
+  generateName: java-openliberty 
 attributes:
   odo.autorestart: "false"
 projects:
@@ -21,7 +21,7 @@ components:
   volumes:
   - name: m2
     containerPath: /home/user/.m2
-    endpoints:
+  endpoints:
   - name: 9080/tcp
     port: 9080
   - name: 9443/tcp
