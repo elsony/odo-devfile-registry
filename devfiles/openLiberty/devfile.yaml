@@ -16,11 +16,8 @@ components:
 - alias: devruntime
   mountSources: true
   type: dockerimage
-  image: kabanero/ubi8-maven:0.3.1 
+  image: ajymau/java-openliberty-odo 
   memoryLimit: 1512Mi
-  volumes:
-  - name: m2
-    containerPath: /home/user/.m2
   endpoints:
   - name: 9080/tcp
     port: 9080
@@ -31,7 +28,7 @@ commands:
     actions:
       - workdir: /projects/user-app
         type: exec
-        command: mvn -B liberty:install-server liberty:create liberty:install-feature dependency:go-offline
+        command: echo "moving liberty" && mkdir -p /projects/user-app/target/liberty && mv /opt/ol/wlp /projects/user-app/target/liberty 
         component: devruntime 
   - name: devBuild
     actions:
