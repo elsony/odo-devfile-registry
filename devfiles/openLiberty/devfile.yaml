@@ -40,14 +40,14 @@ commands:
                  then
                      echo "found the disable file" && echo "devBuild command will not run" && exit 0;
                  else
-                     echo "will run the devBuild command" && mvn package && touch ./.disable-bld-cmd;
+                     echo "will run the devBuild command" && mvn -Dmaven.repo.local=/mvn/repository package && touch ./.disable-bld-cmd;
                  fi
         component: devruntime
   - name: devRun
     actions:
       - workdir: /projects/user-app
         type: exec
-        command: mvn -Dliberty.runtime.version=20.0.0.6 -DhotTests=true liberty:dev
+        command: mvn -Dmaven.repo.local=/mvn/repository -Dliberty.runtime.version=20.0.0.6 -DhotTests=true liberty:dev
         component: devruntime
     attributes:
         restart: "false"
